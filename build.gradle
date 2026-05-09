@@ -11,16 +11,17 @@ repositories {
 }
 
 dependencies {
+    // Using the 1.21.1 API as a base, but Java 25 handles the modern runtime
     compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-    options.release = 21
+    options.release = 25 
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25) 
     }
 }
