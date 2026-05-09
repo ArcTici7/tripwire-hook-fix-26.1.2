@@ -8,21 +8,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Set up Java 21 for the build environment
-      - name: Set up JDK 21
+      # Bumped to JDK 25 for 26.1 compatibility
+      - name: Set up JDK 25
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'temurin'
 
-      # Ensures the build script can run in the GitHub environment
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew build
 
-      # This makes the final .jar available for download in the Actions tab
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
