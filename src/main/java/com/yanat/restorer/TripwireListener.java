@@ -15,12 +15,12 @@ public class TripwireListener implements Listener {
     public void onTripwireBreak(BlockBreakEvent event) {
         Block block = event.getBlock();
         
-        // Filter for Tripwire Hooks
         if (block.getType() == Material.TRIPWIRE_HOOK) {
             TripwireHook hookData = (TripwireHook) block.getBlockData();
             
-            // Re-injecting the dupe: if it was 'attached' when broken, force a second drop
+            // Checks if the hook was attached to a block when broken
             if (hookData.isAttached()) {
+                // Spawns the duplicate hook entity directly at the block location
                 block.getWorld().dropItemNaturally(
                     block.getLocation(), 
                     new ItemStack(Material.TRIPWIRE_HOOK, 1)
